@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en"
+	  xmlns:th="https://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+	<head>
+		<title>MedExpert Login Page</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Reference the CSS file -->
+		<link rel="stylesheet" href="/css/global-style.css">
+		<link rel="stylesheet" href="/css/login-style.css">
+		
+		<script type="text/javascript">
+			function clearForm() {
+				document.form.username.value="";
+				document.form.password.value="";
+			}
+		</script>
+	<body>
+		<div class="background">
+			<div class="main-container">
+				<div class="title">
+					<button type="button" title="Click to go back to Start Page" onclick="location.href='/'" class="go-back-btn">
+						←
+					</button>
+					<h3>Login</h3>
+				</div>
+	
+				<form th:action="@{/authenticateTheUser}" 
+						method="POST" 
+						name="form"
+						class="form-container">
+				
+ 					<!--  Check for login error -->
+	 				<div th:if="${param.error}">			
+						<div class="error-msg" onshow="clearForm()">
+							Invalid username or password.
+						</div>
+					</div> 
+						
+					<!-- Check for logout  -->
+					<div th:if="${param.logout}">
+						<div>
+							You have been logged out.
+						</div>
+					</div>
+
+					<!-- Spring Security Filters will read form data: name="username" and name="password" -->
+					<!-- and authenticate the user -->
+			
+					<input type="text" name="username" placeholder="Username" required="required" class="form-el">
+					<input type="password" name="password" placeholder="Password" required="required" class="form-el">
+					<button type="submit" class="submit-btn">Submit</button>
+				</form>
+			</div>
+		</div>
+	</body>
+	
+</html>

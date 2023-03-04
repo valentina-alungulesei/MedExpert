@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en"
+	  xmlns:th="https://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+	<head>
+		<title>MedExpert Registration</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Reference the CSS file -->
+		<link rel="stylesheet" href="/css/global-style.css">
+		<link rel="stylesheet" href="/css/registration-style.css">
+	
+	<body>
+		<div class="background">
+			<div class="main-container">
+				<div class="title"> 
+					<button type="button" title="Click to go back to Start Page" onclick="location.href='/'" class="go-back-btn">←</button>
+					<h3>Register</h3>
+				</div>
+						
+				<form th:action="@{/processRegistrationForm}"
+					  th:object="${crmUser}"
+					  class="form-container"> 
+
+					<!-- *{} selects property on referenced th:object -->	
+					<input type="text" th:field="*{username}" placeholder="Username" required="required" class="form-el">	
+					<input type="password" th:field="*{password}" placeholder="Password" required="required" class="form-el"> 
+					<input type="password" th:field="*{matchingPassword}"placeholder="Confirm password" required="required" class="form-el"> 
+					<input type="email" th:field="*{email}"placeholder="Email" required="required" class="form-el">
+					<input type="text" th:field="*{firstName}" placeholder="First name" required="required" class="form-el">
+					<input type="text" th:field="*{lastName}" placeholder="Last name" required="required" class="form-el">
+					<input type="date" placeholder="Date of birth" class="form-el">
+					
+				<!-- 	<label>Gender</label>
+						<input type="radio" name="grid" id="male" value="male" class="form-el">
+						<label for="male">Male</label>
+						<input type="radio" name="grid" id="female" value="female" class="form-el">
+						<label for="male">Female</label> -->
+	
+					<!-- When form is submitted the setter methods are called to populate java object with form data -->
+					<button type="submit" class="save-btn">Save</button>	
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

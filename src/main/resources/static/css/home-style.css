@@ -1,0 +1,228 @@
+/****************************/
+/* Styling for menu section */
+/****************************/
+
+.menu-container {
+	background-color: white;
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	width: var(--menu-width);
+	height: 100%;
+	display: flex;
+	flex-flow: column;
+}
+
+.menu-header-container {
+	height: 10%;
+	display: inline-flex;
+	border-bottom-style: solid;
+	border-bottom-color: var(--darck-color);
+	align-items: center;
+}
+
+.img-btn {
+	border: none;
+	background: transparent;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.go-back-btn {
+	position: absolute;
+	left: 1%;
+	height: 30px;
+	width: 30px;
+	margin: 0;
+	border-radius: 15px;
+	border-style: none;
+	text-align: center;
+	justify-content: center;
+	font-family: "Calibri";
+	font-size: 20px;
+	background: transparent;
+}
+
+.go-back-btn:hover {
+	background-color: var(--light-color);
+}
+
+.account-dropdown {
+	position: absolute;
+	top: 3%;
+	right: 1%;
+	width: 30%;
+	display: block;
+}
+
+.dropdown-header {
+	position: relative;
+	float: right;
+	height: 30px;
+	width: 30px;
+	background-image: url("../img/account.png");
+}
+
+.dropdown-content {
+	position: relative;
+	width: 100%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--darck-color);
+	display: none;
+}
+	
+.account-dropdown:hover .dropdown-content {
+	display: flex;
+	flex-flow: column;
+}	
+
+.account-actions-btn {
+	width: 100%;
+	border: none;
+	padding: 5px;
+	background: white;
+}
+
+.account-actions-btn:hover {
+	background-color: var(--light-color);
+	border-left-color: var(--darck-color);
+	border-left-style: solid;
+	border-left-width: 4px;
+}
+
+.menu-title {
+ 	position: absolute;
+	width: 50%;
+	left: 25%;
+	text-align: center;
+}
+
+.menu-element {
+	font-size: 12px;
+	color: gray;
+	align-self: center;
+	margin: 10px;
+	user-select: none;
+}
+
+.menu-btn-container {
+	border-style: solid;;
+}
+
+.menu-btn {
+	background-color: transparent;
+	border: none;
+	height: 7%;
+	text-align: left;
+	text-indent: 23%;
+	font-weight: bold;
+	font-size: 17px;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	background-position: 7% 50%;
+}
+
+.menu-btn:hover {
+	background-color: var(--light-color);
+	border-left-color: var(--darck-color);
+	border-left-style: solid;
+	border-left-width: 4px;
+}
+
+.tests-btn {
+	background-image: url("../img/tests.png");
+}
+
+.prices-btn {
+	background-image: url("../img/prices.png");
+}
+
+.register-btn {
+	background-image: url("../img/account.png");
+}
+
+.appointment-btn {
+	background-image: url("../img/calendar.png");
+}
+
+.results-btn {
+	background-image: url("../img/results.png");
+}
+
+.info-btn {
+	background-image: url("../img/info.png");
+}
+
+/*******************************/
+/* Styling for content section */
+/*******************************/
+.content-container {
+	position: absolute;
+	top: 0;
+	left: 30%;
+	width: 30%;
+	height: 100%;
+	visibility: hidden;
+}
+
+/* Styling content title */
+.content-title {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 10%;
+	width: 100%;
+	display: inline-flex;
+	flex-flow: row;
+	border-bottom: solid var(--darck-color);
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+}
+
+.title-img {
+	height: 30px;
+	width: 30px;
+	margin-right: 20px; 
+}
+
+/* Styling actual content */
+.content {
+	position: absolute;
+	top: 15%;
+	left: 0;
+	width: 100%;
+	height: 83%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--darck-color);
+}
+
+.tests-content, .prices-content {
+	overflow-y: scroll;
+	background-color: white;
+}
+
+.tests-list {
+	margin: 0;
+	padding: 0;
+}
+
+.test-list-item {
+	background: url("../img/flask.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 20px 20px;
+	padding: 15px 0 15px 30px;
+	list-style: none;
+	margin: 0;
+}
+
+.test-list-item:hover {
+	background-color: var(--darck-shade);
+	color: white;
+}
+
+
+

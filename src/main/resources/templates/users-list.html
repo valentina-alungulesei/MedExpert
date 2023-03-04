@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<!-- Reference the CSS file -->
+	<link rel="stylesheet" href="/css/global-style.css">
+
+	<title>MedExpert Users</title>
+</head>
+
+<body>
+	<div>
+		<h3>MedExpert Users</h3>
+		<hr>
+	
+		<table>
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Role</th>
+					<th>Email</th>
+					<th>First name</th>
+					<th>Last name</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="tempUser : ${users}">
+					<td th:text="${tempUser.username}">
+					<td th:text="${tempUser.roles}">
+					<td th:text="${tempUser.email}">
+					<td th:text="${tempUser.firstName}">
+					<td th:text="${tempUser.lastName}">
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html> 

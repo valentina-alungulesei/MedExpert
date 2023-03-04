@@ -1,0 +1,85 @@
+:root {
+	--darck-color: rgb(0, 90, 90);
+	--medium-color: rgb(0, 139, 139);
+	--darck-shade: rgb(0, 90, 90, 0.8);
+	--light-color: rgb(227, 255, 255);
+	--menu-width: 20%;
+}
+
+html {
+	font-family: "Helvetica";
+}
+
+
+/* Does not work */
+/* Set the font-size for displays < 13inch */
+@media (max-width : 1248px) {
+	body {
+	font-size: 8px;
+	}
+}
+
+/* Set the font-size for displays < 28inch */
+@media (max-width : 2688px) {
+	.menu-btn {
+	font-size: 17px;
+	}
+} 
+
+h1 {
+	font-size: 50px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 15px;
+	text-align: left
+}
+
+th {
+	font-weight: normal;
+	background-color: var(--light-color);
+	border-bottom: 1px solid var(--darck-color);
+	pointer-events: none;
+}
+
+td {
+	vertical-align: middle;
+}
+
+tr:hover {
+	background-color: var(--darck-shade);
+	color: white;
+}
+
+::selection {
+	color: var(--darck-color);
+	background: var(--light-color);
+}
+
+::-webkit-scrollbar {
+	width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+	border: 4px solid white;
+	background-clip: padding-box;
+	background-color: rgba(0, 0, 0, .5);
+	border-radius: 9999px;
+}
+
+/* A background that contains a full page image */
+.background {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100vw;
+	height: 100vh;
+	background-image: url('../img/background.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}

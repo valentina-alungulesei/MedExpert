@@ -1,0 +1,28 @@
+name, 						price,	unit,				min_value,	max_value
+Albumin serum,				15,		g/dL,				3.5,		5.5
+Albumin urine,				8,		mg/24 h,			25,			35
+Ammonia blood,				7,		μg/dL,				40,			70
+Bicarbonate serum,			3,		mEq/L,				23,			28
+Blood urea nitrogen (BUN),	7,		mg/dL,				8,			20
+Calcium serum,				5,		mg/dL,				8.6,		10.2
+Carboxyhemoglobin blood,	78,		%,					5,			15
+Cholesterol serum,			67,		mg/dL,				100,		129
+Dopamine urine,				23,		μg/24 hr,			65,			400
+Erythrocyte count,			45,		million/μL,			4.2,		5.9
+Fibrinogen plasma,			6,		mg/dL,				200,		400
+Gamma globulin CSF,			5,		mg/dL,				6.1,		8.3
+Glucose CSF,				13,		mg/dl,				50,			75
+Hemoglobin blood,			5,		g/dL,				12,			18
+Hepatic copper,				54,		μg/g dry weight,	25,			40
+Iron serum,					5,		μg/dL,				50,			150
+Lipase serum,				45,		U/L,				10,			140
+Magnesium urine,			23,		mEq/L,				1.6,		2.6
+Norepinephrine urine,		3,		μg/24 hr,			0,			100
+Oxygen consumption,			54,		mL/min,				225,		275
+Phosphorus urine,			65,		mg/24 hr,			500,		1200
+Protein S activity plasma,	5,		%,					57,			131
+Reticulocyte count,			6,		% of red cells,		0.5,		1.5
+Sodium serum,				34,		mEq/L,				136,		145
+Urea nitrogen blood,		18,		mg/dL,				8,			20
+Vitamin A serum,			5,		pg/mL,				15,			60
+Zinc serum,					6,		μg/dL,				75,			140

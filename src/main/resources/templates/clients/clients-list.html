@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   	<!-- Bootstrap CSS -->
+  	<link rel="stylesheet" 
+    	  href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" 
+     	  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+     	  crossorigin="anonymous">
+
+	<title>MedExpert Clients</title>
+</head>
+
+<body>
+	<div class="container">
+		<h3>MedExpert Clients</h3>
+		<hr>
+		
+		<!-- @ symbol reference the context path (root) of the app -->
+		<a th:href="@{/clients/add}" >
+			Add client
+		</a>
+	
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Email</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Gender</th>
+					<th>Date of birth</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="tempClient : ${clients}">
+					<td th:text="${tempClient.username}">
+					<td th:text="${tempClient.password}">
+					<td th:text="${tempClient.email}">
+					<td th:text="${tempClient.firstName}">
+					<td th:text="${tempClient.lastName}">
+					<td th:text="${tempClient.gender}">
+					<td th:text="${tempClient.dateOfBirth}">
+					
+			
+					<td>
+						<!-- Update button/link -->
+						<!-- clientId=${tempClient.id} appends to the URL ?clientId=xxx -->
+						<a th:href="@{/clients/update(clientId=${tempClient.id})}"
+						   class="btn btn-info btn-sm">
+							Update
+						</a>
+						
+						<!-- Delete button/link -->
+						<a th:href="@{/clients/delete(clientId=${tempClient.id})}"
+						   class="btn btn-danger btn-sm"
+						   onclick="if (!(confirm('Are you sure you want to delete this client?'))) return false">
+							Delete
+						</a>
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html> 

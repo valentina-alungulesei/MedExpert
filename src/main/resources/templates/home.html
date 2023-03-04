@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="https://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+	<head>
+		<title>MedExpert</title>
+		
+		<!-- Required meta data -->
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" shrink-to-fit="no">
+
+		<!-- Reference the CSS file -->
+		<link rel="stylesheet" th:href="@{/css/global-style.css}">
+		<link rel="stylesheet" th:href="@{/css/home-style.css}">
+
+		
+		<script type="text/javascript">
+			
+			// Define a function to show content when a menu option button is clicked
+			function show(contentId) {
+		
+				/* Clear the container first */
+				const oldElements = Array.from(document.getElementById("content-container").children);
+				oldElements.forEach (element => {
+					element.style.visibility = "hidden";
+				});
+				
+				/* Show content according to pressed button */
+				const contentToShow = document.getElementById(contentId);
+				contentToShow.style.visibility = "hidden" ? "visible" : "hidden";	
+			}
+			
+			function requestLogin() {
+				
+			};
+		</script>
+	</head>
+
+	<body>
+		<div class="background">
+		
+			<div class="menu-container">
+				<div class="menu-header-container">
+					<button class="go-back-btn" title="Click to go back" onclick="location.href='/'">←</button>
+					
+					<h2 class="menu-title">MedExpert</h2>
+					
+					<div  class="account-dropdown">
+						<button class="dropdown-header img-btn" title="Account actions"></button>
+						<div class="dropdown-content">
+							<button class="account-actions-btn">Update profile</button>
+							<button class="account-actions-btn">Delete profile</button>
+							<form th:action="@{/logout}" method="POST">
+								<button class="account-actions-btn" type="submit">Log out</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<p class="menu-element">MENU</p>
+				
+				 <!-- Menu options buttons -->
+ 				<button class="menu-btn tests-btn" onclick="show('tests-content')">Tests</button> 
+				<button class="menu-btn prices-btn" onclick="show('prices-content')">Prices</button>
+				
+				<button sec:authorize="hasRole('ADMIN')" class="menu-btn register-btn" onclick="show('register-content')">
+					Register new client
+				</button>
+				
+				<button class="menu-btn appointment-btn" onclick="show('appointment-content')">Schedule appointment</button>
+			
+				<button sec:authorize="hasRole('EMPLOYEE')" class="menu-btn results-btn" onclick="show('enter-results-content')">
+					Enter results
+				</button>
+				
+				<button sec:authorize="isAuthenticated()" class="menu-btn results-btn" onclick="show('view-results-content')">View results</button>
+				<button class="menu-btn info-btn" onclick="show('info-content')">Good to know</button>
+
+			</div>
+	
+			
+			<div id="content-container" class="content-container">
+			
+				<div id="tests-content">
+					<div class="content-title">
+						<img alt="Tests" src="/img/tests.png" class="title-img">
+						Tests
+					</div>
+					
+					<div class="content tests-content">
+						<ul th:each="test : ${testsList}" class="tests-list">
+							<li th:text="${test.name}" class="test-list-item"/>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="prices-content">
+					<div class="content-title" >
+						<img alt="Prices" src="/img/prices.png" class="title-img">
+						Prices
+					</div>
+					
+					<div class="content prices-content">
+						<table>
+							<thead>
+								<tr>
+									<th>Test</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr th:each="test : ${testsList}">
+									<td th:text="${test.name}">
+									<td th:text="${test.price + ' $'}">
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div id="register-content">
+					<div class="content-title">
+					<img alt="New client" src="/img/account.png" class="title-img">
+						Register new client
+					</div>
+					
+					<div class="content">
+					</div>
+				</div>
+					
+					
+				<div id="appointment-content" sec:authorize="isAuthenticated()">
+					<div class="content-title">
+						<img alt="Calendar" src="/img/calendar.png" class="title-img">
+						Schedule appointment
+					</div>
+					
+					<div class="content">
+						
+						<form action="#" th:action="@{/home}" th:object="${appointment}" method="POST"> 
+					
+							<input type="hidden" th:field="*{id}">
+							<input type="hidden" th:field="*{clientId}"> 
+							
+							<input type="date" th:field="*{date}" placeholder="Date">
+							<input type="time" th:field="*{time}" placeholder="Time">
+							<input type="text" th:field="*{tests}" placeholder="Tests">
+							
+							<button type="submit">Make appointment</button>
+					
+						</form> 
+					
+					</div>
+				</div>		
+					
+				<div id="view-results-content" sec:authorize="isAuthenticated()">	
+					<div class="content-title">
+						<img alt="Laboratory results" src="/img/results.png" class="title-img">
+						View results
+					</div>
+					
+					<div class="content">
+					</div>
+				</div>
+				
+				<div id="enter-results-content">	
+					<div class="content-title">
+						<img alt="Laboratory results" src="/img/results.png" class="title-img">
+						Enter results
+					</div>
+					
+					<div class="content">
+					</div>
+				</div>
+					
+				<div id="info-content">
+					<div class="content-title" >
+						<img alt="Info" src="/img/info.png" class="title-img">
+						Good to know
+					</div>
+					
+					<div class="content">
+					</div>
+				</div>		
+			</div>
+		</div>
+</body>
+	
+</html>
