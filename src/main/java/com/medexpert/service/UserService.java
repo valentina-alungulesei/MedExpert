@@ -43,6 +43,7 @@ public class UserService implements IUserService {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	private List<Test> testsList;
+	private User loggedInUser;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -53,6 +54,7 @@ public class UserService implements IUserService {
 		if (user == null) {
 			throw new UsernameNotFoundException(username);
 		}
+		loggedInUser = user;
 		return new org.springframework.security.core.userdetails.User(
 				user.getUsername().toLowerCase(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
 	}
@@ -65,6 +67,14 @@ public class UserService implements IUserService {
 	@Transactional
 	public User findByUsername(String username) {
 		return userDao.findByUsername(username);
+	}
+	
+	@Override
+	public User getLoggedInUser() {
+		if (loggedInUser == null ) {
+			//TODO treat this case
+		}
+		return loggedInUser;
 	}
 	
 	@Override

@@ -24,9 +24,8 @@ import com.medexpert.service.IUserService;
 @Controller
 public class MainController {
 	
-	private IUserService userService;
-	
 	private Logger logger = Logger.getLogger(getClass().getName());
+	private IUserService userService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -102,9 +101,8 @@ public class MainController {
 	
 	@GetMapping("/home")
 	public String showHomePage(Model model) {
-		
-		List<Test> testsList = userService.getTestList();
-		model.addAttribute("testsList", testsList);
+		model.addAttribute("loggedInUser", userService.getLoggedInUser());
+		model.addAttribute("testsList", userService.getTestList());
 		model.addAttribute("appointment", new Appointment());
 		
 		return "home";

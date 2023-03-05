@@ -14,6 +14,8 @@ public interface IUserService extends UserDetailsService {
 	
 	public User findByUsername(String username);
 	
+	public User getLoggedInUser();
+	
 	public void save(CrmUser crmUser);
 
 //	public User findById(int id);

@@ -11,11 +11,10 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" shrink-to-fit="no">
 
-		<!-- Reference the CSS file -->
+		<!-- Reference the CSS files -->
 		<link rel="stylesheet" th:href="@{/css/global-style.css}">
 		<link rel="stylesheet" th:href="@{/css/home-style.css}">
 
-		
 		<script type="text/javascript">
 			
 			// Define a function to show content when a menu option button is clicked
@@ -43,21 +42,13 @@
 		
 			<div class="menu-container">
 				<div class="menu-header-container">
-					<button class="go-back-btn" title="Click to go back" onclick="location.href='/'">←</button>
+					<button class="go-back-btn" title="Click to go back" onclick="location.href='/'">
+						←
+					</button>
 					
 					<h2 class="menu-title">MedExpert</h2>
-					
-					<div  class="account-dropdown">
-						<button class="dropdown-header img-btn" title="Account actions"></button>
-						<div class="dropdown-content">
-							<button class="account-actions-btn">Update profile</button>
-							<button class="account-actions-btn">Delete profile</button>
-							<form th:action="@{/logout}" method="POST">
-								<button class="account-actions-btn" type="submit">Log out</button>
-							</form>
-						</div>
-					</div>
 				</div>
+				
 				<p class="menu-element">MENU</p>
 				
 				 <!-- Menu options buttons -->
@@ -79,11 +70,40 @@
 
 			</div>
 	
+			<div sec:authorize="isAuthenticated()" class="account-section-container">
+				
+				<div class="title-container">
+					 <p>Welcome&nbsp</p> <!-- &nbsp is for a white space between 2 words, alternative = &#160 -->
+					 <p th:text="${loggedInUser.firstName}"></p>
+				
+					<div class="account-dropdown">
+						<button class="dropdown-header img-btn" title="Account actions"></button>
+						<div class="dropdown-content">
+							<button class="account-actions-btn">Update profile</button>
+							<button class="account-actions-btn">Delete profile</button>
+							<form th:action="@{/logout}" method="POST">
+								<button class="account-actions-btn" type="submit">Log out</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				
+				<div class="account-details-container">
+					<label sec:authorize="hasRole('CLIENT')" class="account-el">
+						Check your appointments:
+					</label>
+					
+					<label sec:authorize="hasAnyRole('EMPLOYEE', 'MANAGER')" class="account-el">
+						Today's schedule:
+					</label>
+					
+				</div>
+			</div>
 			
 			<div id="content-container" class="content-container">
 			
 				<div id="tests-content">
-					<div class="content-title">
+					<div class="title-container">
 						<img alt="Tests" src="/img/tests.png" class="title-img">
 						Tests
 					</div>
@@ -96,7 +116,7 @@
 				</div>
 				
 				<div id="prices-content">
-					<div class="content-title" >
+					<div class="title-container" >
 						<img alt="Prices" src="/img/prices.png" class="title-img">
 						Prices
 					</div>
@@ -121,7 +141,7 @@
 				</div>
 				
 				<div id="register-content">
-					<div class="content-title">
+					<div class="title-container">
 					<img alt="New client" src="/img/account.png" class="title-img">
 						Register new client
 					</div>
@@ -132,7 +152,7 @@
 					
 					
 				<div id="appointment-content" sec:authorize="isAuthenticated()">
-					<div class="content-title">
+					<div class="title-container">
 						<img alt="Calendar" src="/img/calendar.png" class="title-img">
 						Schedule appointment
 					</div>
@@ -156,7 +176,7 @@
 				</div>		
 					
 				<div id="view-results-content" sec:authorize="isAuthenticated()">	
-					<div class="content-title">
+					<div class="title-container">
 						<img alt="Laboratory results" src="/img/results.png" class="title-img">
 						View results
 					</div>
@@ -166,7 +186,7 @@
 				</div>
 				
 				<div id="enter-results-content">	
-					<div class="content-title">
+					<div class="title-container">
 						<img alt="Laboratory results" src="/img/results.png" class="title-img">
 						Enter results
 					</div>
@@ -176,7 +196,7 @@
 				</div>
 					
 				<div id="info-content">
-					<div class="content-title" >
+					<div class="title-container" >
 						<img alt="Info" src="/img/info.png" class="title-img">
 						Good to know
 					</div>
