@@ -70,20 +70,31 @@
 
 			</div>
 	
-			<div sec:authorize="isAuthenticated()" class="account-section-container">
-				
+			<div class="account-section-container">
+			
 				<div class="title-container">
-					 <p>Welcome&nbsp</p> <!-- &nbsp is for a white space between 2 words, alternative = &#160 -->
-					 <p th:text="${loggedInUser.firstName}"></p>
-				
+					<!-- &nbsp is for a white space between 2 words, alternative = &#160 -->
+						Welcome&nbsp 
+						<p sec:authorize="isAuthenticated()" th:text="${loggedInUser.firstName}"></p>
+		
 					<div class="account-dropdown">
 						<button class="dropdown-header img-btn" title="Account actions"></button>
 						<div class="dropdown-content">
-							<button class="account-actions-btn">Update profile</button>
-							<button class="account-actions-btn">Delete profile</button>
-							<form th:action="@{/logout}" method="POST">
-								<button class="account-actions-btn" type="submit">Log out</button>
-							</form>
+							<button sec:authorize="!isAuthenticated()" onclick="location.href='/register'" class="account-actions-btn first-account-actions-btn">
+								Register
+							</button>
+							<button sec:authorize="!isAuthenticated()" onclick="location.href='/login'" class="account-actions-btn last-account-actions-btn">
+								Log in
+							</button>
+							<button sec:authorize="isAuthenticated()" class="account-actions-btn first-account-actions-btn">See profile details</button>
+							<button sec:authorize="isAuthenticated()" class="account-actions-btn">Update profile</button>
+							<button sec:authorize="isAuthenticated()" class="account-actions-btn">Delete profile</button>
+						<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
+								<button class="account-actions-btn last-account-actions-btn" type="submit">
+									Log out
+								</button>
+						</form>
+							
 						</div>
 					</div>
 				</div>
@@ -96,7 +107,6 @@
 					<label sec:authorize="hasAnyRole('EMPLOYEE', 'MANAGER')" class="account-el">
 						Today's schedule:
 					</label>
-					
 				</div>
 			</div>
 			
