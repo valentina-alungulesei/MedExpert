@@ -106,6 +106,10 @@
 	background-image: url("../img/results.png");
 }
 
+.users-btn {
+	background-image: url("../img/users.png");
+}
+
 .info-btn {
 	background-image: url("../img/info.png");
 }

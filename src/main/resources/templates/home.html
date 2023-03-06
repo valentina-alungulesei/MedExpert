@@ -42,7 +42,7 @@
 		
 			<div class="menu-container">
 				<div class="menu-header-container">
-					<button class="go-back-btn" title="Click to go back" onclick="location.href='/'">
+					<button class="go-back-btn" title="Click to go back to Start page" onclick="location.href='/'">
 						←
 					</button>
 					
@@ -66,6 +66,7 @@
 				</button>
 				
 				<button sec:authorize="isAuthenticated()" class="menu-btn results-btn" onclick="show('view-results-content')">View results</button>
+ 				<button sec:authorize="hasAnyRole('MANAGER', 'ADMIN')" class="menu-btn users-btn" onclick="location.href='/users'">View users</button>
 				<button class="menu-btn info-btn" onclick="show('info-content')">Good to know</button>
 
 			</div>
