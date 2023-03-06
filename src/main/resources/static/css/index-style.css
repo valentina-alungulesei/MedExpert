@@ -9,27 +9,3 @@
 	align-items: center;
 	justify-content: center
 }
-
-.my-button {
-	background-color: var(--medium-color);
-	color: white;
-	border: 2px solid white;
-	border-radius: 20px;
-	padding: 8px 16px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	transition-duration: 0.2s;
-}
-
-.my-button:hover {
-	background-color: var(--darck-color);
-	color: white;
-/* 	box-shadow: 0 12px 16px 0 var(--darck-color); */
-}
-
-.my-button:active {
-  transform: translateY(2px);
-}

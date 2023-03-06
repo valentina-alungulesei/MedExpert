@@ -180,6 +180,13 @@
 	color: white;
 }
 
+.appointment-content{
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+
 /*******************************/
 /* Styling for account section */
 /*******************************/

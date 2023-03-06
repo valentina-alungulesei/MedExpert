@@ -161,27 +161,33 @@
 				</div>
 					
 					
-				<div id="appointment-content" sec:authorize="isAuthenticated()">
-					<div class="title-container">
-						<img alt="Calendar" src="/img/calendar.png" class="title-img">
-						Schedule appointment
+				<div id="appointment-content">
+					<div sec:authorize="!isAuthenticated()" class="info-content">
+						<p class="info-text">In order to make an appointment, please login.</p>
+						<button class="my-button" onclick="location.href='/login'">Log in</button>
+						<br><br>
+						<p class="info-text">You don't have an account?</p>
+						<p class="info-text">Consider registering as a new client.</p>
+						<button class="my-button" onclick="location.href='/register'">Register</button>
 					</div>
-					
-					<div class="content">
+				
+					<div sec:authorize="isAuthenticated()">
+						<div class="title-container">
+							<img alt="Calendar" src="/img/calendar.png" class="title-img">
+							Schedule appointment
+						</div>
 						
-						<form action="#" th:action="@{/home}" th:object="${appointment}" method="POST"> 
-					
-							<input type="hidden" th:field="*{id}">
-							<input type="hidden" th:field="*{clientId}"> 
+						<div class="content">
 							
-							<input type="date" th:field="*{date}" placeholder="Date">
-							<input type="time" th:field="*{time}" placeholder="Time">
-							<input type="text" th:field="*{tests}" placeholder="Tests">
-							
-							<button type="submit">Make appointment</button>
-					
-						</form> 
-					
+							<form action="#" th:action="@{/home}" th:object="${appointment}" method="POST" class="appointment-content"> 
+								<input type="hidden" th:field="*{id}">
+								<input type="hidden" th:field="*{clientId}"> 
+								<input type="date" th:field="*{date}" placeholder="Date" class="form-el">
+								<input type="time" th:field="*{time}" placeholder="Time" class="form-el">
+								<input type="text" th:field="*{tests}" placeholder="Tests" class="form-el">
+								<button type="submit" class="my-button">Make appointment</button>
+							</form> 
+						</div>
 					</div>
 				</div>		
 					
